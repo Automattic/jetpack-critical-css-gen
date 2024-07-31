@@ -1,12 +1,11 @@
 {
 	"name": "automattic/jetpack-critical-css-gen",
-	"description": "A library for generating Critical CSS.",
+	"description": "A flexible Critical CSS Generator that supports multiple URLs and viewports, with both server-side and client-side generation capabilities.",
 	"type": "library",
 	"license": "GPL-2.0-or-later",
 	"require": {},
 	"require-dev": {
-		"yoast/phpunit-polyfills": "1.0.4",
-		"automattic/jetpack-changelogger": "@dev"
+		"automattic/jetpack-changelogger": "^4.2.5"
 	},
 	"autoload": {
 		"classmap": [
@@ -20,33 +19,17 @@
 		"build-production": [
 			"NODE_ENV=production pnpm run build"
 		],
-		"watch": [
-			"Composer\\Config::disableProcessTimeout",
-			"pnpm run watch"
-		],
 		"test-js": [
-			"pnpm run test"
-		],
-		"test-coverage": [
-			"pnpm run test-coverage"
+			"pnpm exec playwright install && pnpm run test"
 		]
 	},
-	"repositories": [
-		{
-			"type": "path",
-			"url": "../../packages/*",
-			"options": {
-				"monorepo": true
-			}
-		}
-	],
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"extra": {
-		"mirror-repo": "Automattic/jetpack-critical-css-gen",
+		"autotagger": true,
 		"changelogger": {
 			"link-template": "https://github.com/Automattic/jetpack-critical-css-gen/compare/v${old}...v${new}"
 		},
-		"autotagger": true
+		"mirror-repo": "Automattic/jetpack-critical-css-gen"
 	}
 }
