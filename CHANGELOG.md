@@ -12,3 +12,6 @@ This is an alpha version! The changes listed here are not final.
 ### Added
 - Add package files.
 - Initial version.
+
+### Changed
+- Updated package dependencies.
