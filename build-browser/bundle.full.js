@@ -14360,6 +14360,41 @@ var CriticalCSSGenerator = (function (exports) {
 
     var sortSelectors_1 = sortSelectors$3;
 
+    function override$7(source1, source2) {
+      var target = {};
+      var key1;
+      var key2;
+      var item;
+
+      for (key1 in source1) {
+        item = source1[key1];
+
+        if (Array.isArray(item)) {
+          target[key1] = item.slice(0);
+        } else if (typeof item == 'object' && item !== null) {
+          target[key1] = override$7(item, {});
+        } else {
+          target[key1] = item;
+        }
+      }
+
+      for (key2 in source2) {
+        item = source2[key2];
+
+        if (key2 in target && Array.isArray(item)) {
+          target[key2] = item.slice(0);
+        } else if (key2 in target && typeof item == 'object' && item !== null) {
+          target[key2] = override$7(target[key2], item);
+        } else {
+          target[key2] = item;
+        }
+      }
+
+      return target;
+    }
+
+    var override_1 = override$7;
+
     /*
     The MIT License (MIT)
 
@@ -14509,46 +14544,20 @@ var CriticalCSSGenerator = (function (exports) {
         'default': _polyfillNode_os
     });
 
-    var require$$0$2 = /*@__PURE__*/getAugmentedNamespace(_polyfillNode_os$1);
-
-    function override$7(source1, source2) {
-      var target = {};
-      var key1;
-      var key2;
-      var item;
-
-      for (key1 in source1) {
-        item = source1[key1];
-
-        if (Array.isArray(item)) {
-          target[key1] = item.slice(0);
-        } else if (typeof item == 'object' && item !== null) {
-          target[key1] = override$7(item, {});
-        } else {
-          target[key1] = item;
-        }
-      }
-
-      for (key2 in source2) {
-        item = source2[key2];
-
-        if (key2 in target && Array.isArray(item)) {
-          target[key2] = item.slice(0);
-        } else if (key2 in target && typeof item == 'object' && item !== null) {
-          target[key2] = override$7(target[key2], item);
-        } else {
-          target[key2] = item;
-        }
-      }
-
-      return target;
-    }
-
-    var override_1 = override$7;
-
-    var systemLineBreak = require$$0$2.EOL;
+    var require$$1$3 = /*@__PURE__*/getAugmentedNamespace(_polyfillNode_os$1);
 
     var override$6 = override_1;
+
+    function getSystemLineBreak() {
+      var systemLineBreak = '\n';
+      try {
+        var os = require$$1$3;
+        systemLineBreak = os.EOL;
+      } catch (_) {
+        // no op
+      }
+      return systemLineBreak;
+    }
 
     var Breaks$1 = {
       AfterAtRule: 'afterAtRule',
@@ -14565,7 +14574,7 @@ var CriticalCSSGenerator = (function (exports) {
     var BreakWith = {
       CarriageReturnLineFeed: '\r\n',
       LineFeed: '\n',
-      System: systemLineBreak
+      System: getSystemLineBreak()
     };
 
     var IndentWith = {
@@ -14741,7 +14750,7 @@ var CriticalCSSGenerator = (function (exports) {
       case BreakWith.LineFeed:
         return BreakWith.LineFeed;
       default:
-        return systemLineBreak;
+        return BreakWith.System;
       }
     }
 
@@ -17681,7 +17690,7 @@ var CriticalCSSGenerator = (function (exports) {
               var applies = (colorFnLowercase == 'hsl' && tokens.length == 3)
                 || (colorFnLowercase == 'hsla' && tokens.length == 4)
                 || (colorFnLowercase == 'rgb' && tokens.length === 3 && colorDef.indexOf('%') > 0)
-                || (colorFnLowercase == 'rgba' && tokens.length == 4 && colorDef.indexOf('%') > 0);
+                || (colorFnLowercase == 'rgba' && tokens.length == 4 && tokens[0].indexOf('%') > 0);
 
               if (!applies) {
                 return match;
@@ -35362,18 +35371,18 @@ var CriticalCSSGenerator = (function (exports) {
     function extractImportUrlAndMedia$2(atRuleValue) {
       var uri;
       var mediaQuery;
-      var stripped;
+      var normalized;
       var parts;
 
-      stripped = atRuleValue
+      normalized = atRuleValue
         .replace(IMPORT_PREFIX_PATTERN$1, '')
         .trim()
         .replace(URL_PREFIX_PATTERN$1, '(')
-        .replace(URL_SUFFIX_PATTERN$1, ')')
+        .replace(URL_SUFFIX_PATTERN$1, ') ')
         .replace(QUOTE_PREFIX_PATTERN$1, '')
         .replace(QUOTE_SUFFIX_PATTERN$1, '');
 
-      parts = split(stripped, ' ');
+      parts = split(normalized, ' ');
 
       uri = parts[0]
         .replace(BRACE_PREFIX, '')
@@ -35506,7 +35515,11 @@ var CriticalCSSGenerator = (function (exports) {
         return null;
       }
 
-      return fs$1.readFileSync(absoluteUri, 'utf8');
+      var result = fs$1.readFileSync(absoluteUri, 'utf8');
+      if (result.charCodeAt(0) === 65279) {
+        result = result.substring(1);
+      }
+      return result;
     }
 
     var loadOriginalSources_1 = loadOriginalSources$1;
@@ -35776,7 +35789,9 @@ var CriticalCSSGenerator = (function (exports) {
       '@-webkit-keyframes',
       '@keyframes',
       '@media',
-      '@supports'
+      '@supports',
+      '@container',
+      '@layer'
     ];
 
     var IGNORE_END_COMMENT_PATTERN = /\/\* clean-css ignore:end \*\/$/;
@@ -35884,7 +35899,7 @@ var CriticalCSSGenerator = (function (exports) {
           && source[position.index - 1] == Marker$1.ASTERISK;
         isCommentEnd = level == Level.COMMENT && isCommentEndMarker;
         characterWithNoSpecialMeaning = !isSpace && !isCarriageReturn && (character >= 'A' && character <= 'Z' || character >= 'a' && character <= 'z' || character >= '0' && character <= '9' || character == '-');
-        isVariable = isVariable || (level != Level.COMMENT && !seekingValue && isPreviousDash && character === '-');
+        isVariable = isVariable || (level != Level.COMMENT && !seekingValue && isPreviousDash && character === '-' && buffer.length === 1);
         isPreviousDash = character === '-';
         roundBracketLevel = Math.max(roundBracketLevel, 0);
 
@@ -36919,6 +36934,10 @@ var CriticalCSSGenerator = (function (exports) {
         importedStyles = isLoaded
           ? inlinerContext.externalContext.sourcesContent[normalizedPath]
           : fs.readFileSync(absoluteUri, 'utf-8');
+
+        if (importedStyles.charCodeAt(0) === 65279) {
+          importedStyles = importedStyles.substring(1);
+        }
 
         inlinerContext.inlinedStylesheets.push(absoluteUri);
         inlinerContext.inline = inlinerContext.externalContext.options.inline;
