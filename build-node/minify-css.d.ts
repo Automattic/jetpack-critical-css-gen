@@ -6,6 +6,6 @@
  *
  * @param {string} css - CSS to minify.
  *
- * @returns {[ string, string[] ]} - Minified CSS and a list of errors returned.
+ * @return {[ string, string[] ]} - Minified CSS and a list of errors returned.
  */
 export declare function minifyCss(css: string): [string, string[]];

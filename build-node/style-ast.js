@@ -15,7 +15,7 @@ const excludedProperties = [
 /**
  * Checks if the given node is a CSS declaration.
  * @param {csstree.CssNode} node - The CSS node to check.
- * @returns {boolean} True if the node is a CSS declaration, false otherwise.
+ * @return {boolean} True if the node is a CSS declaration, false otherwise.
  */
 function isDeclaration(node) {
     return node.type === 'Declaration';
@@ -23,7 +23,7 @@ function isDeclaration(node) {
 /**
  * Checks if the given node has an empty child list.
  * @param {csstree.CssNode} node - The CSS node to check.
- * @returns {boolean} True if the node has an empty child list, false otherwise.
+ * @return {boolean} True if the node has an empty child list, false otherwise.
  */
 function hasEmptyChildList(node) {
     if ('children' in node && node.children instanceof csstree.List) {
@@ -75,7 +75,7 @@ export class StyleAST {
      *
      * @param {Set< string >} criticalSelectors - Set of selectors to keep in the new AST.
      *
-     * @returns {StyleAST} - New AST with pruned contents.
+     * @return {StyleAST} - New AST with pruned contents.
      */
     pruned(criticalSelectors) {
         const clone = new StyleAST(this.css, csstree.clone(this.ast), this.errors);
@@ -91,7 +91,7 @@ export class StyleAST {
      * Given an AST node, returns the original text it was compiled from in the source CSS.
      *
      * @param {object} node - Node from the AST.
-     * @returns {string} original text the node was compiled from.
+     * @return {string} original text the node was compiled from.
      */
     originalText(node) {
         if (node.loc && node.loc.start && node.loc.end) {
@@ -150,7 +150,7 @@ export class StyleAST {
      * that were removed.
      *
      * @param {Set< string >} usedVariables - Set of used variables to keep.
-     * @returns {number} variables pruned.
+     * @return {number} variables pruned.
      */
     pruneUnusedVariables(usedVariables) {
         let pruned = 0;
@@ -174,7 +174,7 @@ export class StyleAST {
     }
     /**
      * Find all variables that are used and return them as a Set.
-     * @returns {Set< string >} Set of used variables.
+     * @return {Set< string >} Set of used variables.
      */
     getUsedVariables() {
         const usedVariables = new Set();
@@ -258,7 +258,7 @@ export class StyleAST {
      * Returns true if the given CSS rule object relates to animation keyframes.
      *
      * @param {csstree.WalkContext} rule - CSS rule.
-     * @returns {boolean} True if the rule is a keyframe rule, false otherwise.
+     * @return {boolean} True if the rule is a keyframe rule, false otherwise.
      */
     static isKeyframeRule(rule) {
         return (rule.atrule && csstree.keyword(rule.atrule.name).basename === 'keyframes') || false;
@@ -414,7 +414,7 @@ export class StyleAST {
     /**
      * Returns a count of the rules in this Style AST.
      *
-     * @returns {number} rules in this AST.
+     * @return {number} rules in this AST.
      */
     ruleCount() {
         let rules = 0;
@@ -429,7 +429,7 @@ export class StyleAST {
     /**
      * Returns a list of font families that are used by any rule in this AST.
      *
-     * @returns {Set<string>} Set of used fonts.
+     * @return {Set<string>} Set of used fonts.
      */
     getUsedFontFamilies() {
         const fontFamilies = new Set();
@@ -458,7 +458,7 @@ export class StyleAST {
      * string types if present.
      *
      * @param {csstree.CssNode} node - AST node.
-     * @returns {string} The value of the node as a string.
+     * @return {string} The value of the node as a string.
      */
     static readValue(node) {
         if (node.type === 'String' && stringPattern.test(node.value)) {
@@ -477,7 +477,7 @@ export class StyleAST {
      *
      * @param {object} mediaQueryNode - Media Query AST node to examine.
      *
-     * @returns {boolean} true if the media query is relevant to screens.
+     * @return {boolean} true if the media query is relevant to screens.
      */
     static isUsefulMediaQuery(mediaQueryNode) {
         // Find media types.
@@ -513,7 +513,7 @@ export class StyleAST {
     /**
      * Returns this AST converted to CSS.
      *
-     * @returns {string} this AST represented in CSS.
+     * @return {string} this AST represented in CSS.
      */
     toCSS() {
         return csstree.generate(this.ast);
@@ -523,7 +523,7 @@ export class StyleAST {
      *
      * @param {string} css - CSS to parse.
      *
-     * @returns {StyleAST} new parse AST based on the CSS.
+     * @return {StyleAST} new parse AST based on the CSS.
      */
     static parse(css) {
         const errors = [];

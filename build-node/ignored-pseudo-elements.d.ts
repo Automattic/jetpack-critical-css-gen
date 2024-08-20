@@ -3,6 +3,6 @@
  *
  * @param {string} selector - selector to filter.
  *
- * @returns {string} selector with ignored pseudo elements removed.
+ * @return {string} selector with ignored pseudo elements removed.
  */
 export declare function removeIgnoredPseudoElements(selector: string): string;

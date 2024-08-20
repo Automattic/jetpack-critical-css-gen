@@ -18,9 +18,9 @@ var CriticalCSSGenerator = (function (exports) {
          * Context-specific wrapper for fetch; uses window.fetch in browsers, or a
          * node library when using Puppeteer.
          *
-         * @param {string} _url - The URL to fetch
-         * @param {FetchOptions} _options - Fetch options
-         * @param {'css' | 'html'} _role - Role of the fetch operation
+         * @param {string}         _url     - The URL to fetch
+         * @param {FetchOptions}   _options - Fetch options
+         * @param {'css' | 'html'} _role    - Role of the fetch operation
          */
         async fetch(_url, _options, _role) {
             throw new Error('Undefined interface method: BrowserInterface.fetch()');
@@ -48,9 +48,9 @@ var CriticalCSSGenerator = (function (exports) {
         /**
          * Get all internal styles as a combined string from the window.
          *
-         * @param {object} wrappedArgs - Object containing the inner window.
+         * @param {object} wrappedArgs             - Object containing the inner window.
          * @param {Window} wrappedArgs.innerWindow - Window inside the browser interface.
-         * @returns {string} Combined internal styles as a string.
+         * @return {string} Combined internal styles as a string.
          */
         static innerGetInternalStyles({ innerWindow }) {
             innerWindow = null === innerWindow ? window : innerWindow;
@@ -65,11 +65,11 @@ var CriticalCSSGenerator = (function (exports) {
          * for easy querySelector calling (values), return an array of selectors which match
          * _any_ element on the page.
          *
-         * @param {object}   wrappedArgs - Object containing the inner window and arguments.
+         * @param {object}   wrappedArgs             - Object containing the inner window and arguments.
          * @param {Window}   wrappedArgs.innerWindow - Window inside the browser interface.
          * @param {Object[]} wrappedArgs.args        - Array of arguments.
-         * {Object} wrappedArgs.args[selectors] - Map containing selectors (object keys), and simplified versions for easy matching (values).
-         * @returns {string[]} Array of selectors matching above-the-fold elements.
+         *                                           {Object} wrappedArgs.args[selectors] - Map containing selectors (object keys), and simplified versions for easy matching (values).
+         * @return {string[]} Array of selectors matching above-the-fold elements.
          */
         static innerFindMatchingSelectors({ innerWindow, args: [selectors] }) {
             innerWindow = null === innerWindow ? window : innerWindow;
@@ -88,12 +88,12 @@ var CriticalCSSGenerator = (function (exports) {
          * for easy querySelector calling (values), return an array of selectors which match
          * any above-the-fold element on the page.
          *
-         * @param {object}   wrappedArgs - Object containing the inner window and arguments.
+         * @param {object}   wrappedArgs             - Object containing the inner window and arguments.
          * @param {Window}   wrappedArgs.innerWindow - Window inside the browser interface.
          * @param {Object[]} wrappedArgs.args        - Array of arguments.
-         * {Object} wrappedArgs.args[selectors] - Map containing selectors (object keys), and simplified versions for easy matching (values).
-         * {string[]} wrappedArgs.args[pageSelectors] - String array containing selectors that appear anywhere on this page (as returned by innerFindMatchingSelectors) - should be a subset of keys in selectors.
-         * @returns {string[]} Array of selectors matching above-the-fold elements.
+         *                                           {Object} wrappedArgs.args[selectors] - Map containing selectors (object keys), and simplified versions for easy matching (values).
+         *                                           {string[]} wrappedArgs.args[pageSelectors] - String array containing selectors that appear anywhere on this page (as returned by innerFindMatchingSelectors) - should be a subset of keys in selectors.
+         * @return {string[]} Array of selectors matching above-the-fold elements.
          */
         static innerFindAboveFoldSelectors({ innerWindow, args: [selectors, pageSelectors], }) {
             /**
@@ -13303,7 +13303,7 @@ var CriticalCSSGenerator = (function (exports) {
     /**
      * Checks if the given node is a CSS declaration.
      * @param {csstree.CssNode} node - The CSS node to check.
-     * @returns {boolean} True if the node is a CSS declaration, false otherwise.
+     * @return {boolean} True if the node is a CSS declaration, false otherwise.
      */
     function isDeclaration(node) {
         return node.type === 'Declaration';
@@ -13311,7 +13311,7 @@ var CriticalCSSGenerator = (function (exports) {
     /**
      * Checks if the given node has an empty child list.
      * @param {csstree.CssNode} node - The CSS node to check.
-     * @returns {boolean} True if the node has an empty child list, false otherwise.
+     * @return {boolean} True if the node has an empty child list, false otherwise.
      */
     function hasEmptyChildList(node) {
         if ('children' in node && node.children instanceof List) {
@@ -13363,7 +13363,7 @@ var CriticalCSSGenerator = (function (exports) {
          *
          * @param {Set< string >} criticalSelectors - Set of selectors to keep in the new AST.
          *
-         * @returns {StyleAST} - New AST with pruned contents.
+         * @return {StyleAST} - New AST with pruned contents.
          */
         pruned(criticalSelectors) {
             const clone = new StyleAST(this.css, clone$1(this.ast), this.errors);
@@ -13379,7 +13379,7 @@ var CriticalCSSGenerator = (function (exports) {
          * Given an AST node, returns the original text it was compiled from in the source CSS.
          *
          * @param {object} node - Node from the AST.
-         * @returns {string} original text the node was compiled from.
+         * @return {string} original text the node was compiled from.
          */
         originalText(node) {
             if (node.loc && node.loc.start && node.loc.end) {
@@ -13438,7 +13438,7 @@ var CriticalCSSGenerator = (function (exports) {
          * that were removed.
          *
          * @param {Set< string >} usedVariables - Set of used variables to keep.
-         * @returns {number} variables pruned.
+         * @return {number} variables pruned.
          */
         pruneUnusedVariables(usedVariables) {
             let pruned = 0;
@@ -13462,7 +13462,7 @@ var CriticalCSSGenerator = (function (exports) {
         }
         /**
          * Find all variables that are used and return them as a Set.
-         * @returns {Set< string >} Set of used variables.
+         * @return {Set< string >} Set of used variables.
          */
         getUsedVariables() {
             const usedVariables = new Set();
@@ -13546,7 +13546,7 @@ var CriticalCSSGenerator = (function (exports) {
          * Returns true if the given CSS rule object relates to animation keyframes.
          *
          * @param {csstree.WalkContext} rule - CSS rule.
-         * @returns {boolean} True if the rule is a keyframe rule, false otherwise.
+         * @return {boolean} True if the rule is a keyframe rule, false otherwise.
          */
         static isKeyframeRule(rule) {
             return (rule.atrule && keyword$1(rule.atrule.name).basename === 'keyframes') || false;
@@ -13702,7 +13702,7 @@ var CriticalCSSGenerator = (function (exports) {
         /**
          * Returns a count of the rules in this Style AST.
          *
-         * @returns {number} rules in this AST.
+         * @return {number} rules in this AST.
          */
         ruleCount() {
             let rules = 0;
@@ -13717,7 +13717,7 @@ var CriticalCSSGenerator = (function (exports) {
         /**
          * Returns a list of font families that are used by any rule in this AST.
          *
-         * @returns {Set<string>} Set of used fonts.
+         * @return {Set<string>} Set of used fonts.
          */
         getUsedFontFamilies() {
             const fontFamilies = new Set();
@@ -13746,7 +13746,7 @@ var CriticalCSSGenerator = (function (exports) {
          * string types if present.
          *
          * @param {csstree.CssNode} node - AST node.
-         * @returns {string} The value of the node as a string.
+         * @return {string} The value of the node as a string.
          */
         static readValue(node) {
             if (node.type === 'String' && stringPattern.test(node.value)) {
@@ -13765,7 +13765,7 @@ var CriticalCSSGenerator = (function (exports) {
          *
          * @param {object} mediaQueryNode - Media Query AST node to examine.
          *
-         * @returns {boolean} true if the media query is relevant to screens.
+         * @return {boolean} true if the media query is relevant to screens.
          */
         static isUsefulMediaQuery(mediaQueryNode) {
             // Find media types.
@@ -13801,7 +13801,7 @@ var CriticalCSSGenerator = (function (exports) {
         /**
          * Returns this AST converted to CSS.
          *
-         * @returns {string} this AST represented in CSS.
+         * @return {string} this AST represented in CSS.
          */
         toCSS() {
             return generate(this.ast);
@@ -13811,7 +13811,7 @@ var CriticalCSSGenerator = (function (exports) {
          *
          * @param {string} css - CSS to parse.
          *
-         * @returns {StyleAST} new parse AST based on the CSS.
+         * @return {StyleAST} new parse AST based on the CSS.
          */
         static parse(css) {
             const errors = [];
@@ -13899,7 +13899,7 @@ var CriticalCSSGenerator = (function (exports) {
          * Collates an object describing the selectors found in the CSS files in this set, and which
          * HTML page URLs include them (via CSS files)
          *
-         * @returns {object} - An object with selector text keys, each containing a Set of page URLs (strings)
+         * @return {object} - An object with selector text keys, each containing a Set of page URLs (strings)
          */
         collateSelectorPages() {
             const selectors = {};
@@ -13929,7 +13929,7 @@ var CriticalCSSGenerator = (function (exports) {
          * set of selectors that are worth keeping. (i.e.: appear above the fold).
          *
          * @param {Set<string>} usefulSelectors - Set of selectors to keep.
-         * @returns {StyleAST[]} Array of pruned StyleAST objects.
+         * @return {StyleAST[]} Array of pruned StyleAST objects.
          */
         prunedAsts(usefulSelectors) {
             // Perform basic pruning.
@@ -14027,7 +14027,7 @@ var CriticalCSSGenerator = (function (exports) {
         /**
          * Returns a list of errors that occurred while fetching or parsing these CSS files.
          *
-         * @returns {Error[]} - List of errors that occurred.
+         * @return {Error[]} - List of errors that occurred.
          */
         getErrors() {
             return this.errors;
@@ -14048,7 +14048,7 @@ var CriticalCSSGenerator = (function (exports) {
      * Builds a RegExp for finding pseudo elements that should be ignored while matching
      * elements that are above the fold.
      *
-     * @returns {RegExp} A RegExp to use when removing unwanted pseudo elements.
+     * @return {RegExp} A RegExp to use when removing unwanted pseudo elements.
      */
     function getRemovePseudoElementRegex() {
         if (removePseudoElementRegex) {
@@ -14063,7 +14063,7 @@ var CriticalCSSGenerator = (function (exports) {
      *
      * @param {string} selector - selector to filter.
      *
-     * @returns {string} selector with ignored pseudo elements removed.
+     * @return {string} selector with ignored pseudo elements removed.
      */
     function removeIgnoredPseudoElements(selector) {
         return selector.replace(getRemovePseudoElementRegex(), '').trim();
@@ -37375,7 +37375,7 @@ var CriticalCSSGenerator = (function (exports) {
      *
      * @param {string} css - CSS to minify.
      *
-     * @returns {[ string, string[] ]} - Minified CSS and a list of errors returned.
+     * @return {[ string, string[] ]} - Minified CSS and a list of errors returned.
      */
     function minifyCss(css) {
         const result = new CleanCSS().minify(css);
@@ -37397,7 +37397,7 @@ var CriticalCSSGenerator = (function (exports) {
      * @param {BrowserInterface} browserInterface - interface to access pages
      * @param {string[]}         urls             - list of URLs to scan for CSS files
      * @param {number}           maxPages         - number of pages to process at most
-     * @returns {Array} - Two member array; CSSFileSet, and an object containing errors that occurred at each URL.
+     * @return {Array} - Two member array; CSSFileSet, and an object containing errors that occurred at each URL.
      */
     async function collateCssFiles(browserInterface, urls, maxPages) {
         const cssFiles = new CSSFileSet(browserInterface);
@@ -37446,7 +37446,7 @@ var CriticalCSSGenerator = (function (exports) {
      * @param {number}           param.maxPages         - Maximum number of pages to process
      * @param {Function}         param.updateProgress   - Update progress callback function
      *
-     * @returns {Set<string>} - List of above the fold selectors.
+     * @return {Set<string>} - List of above the fold selectors.
      */
     async function getAboveFoldSelectors({ browserInterface, selectorPages, validUrls, viewports, maxPages, updateProgress, }) {
         // For each selector string, create a "trimmed" version with the stuff JavaScript can't handle cut out.
@@ -37481,15 +37481,15 @@ var CriticalCSSGenerator = (function (exports) {
     /**
      * Generates critical CSS for the given URLs and viewports.
      *
-     * @param {object} root0 - The options object
+     * @param {object}           root0                  - The options object
      * @param {BrowserInterface} root0.browserInterface - Interface to interact with the browser
-     * @param {Function} root0.progressCallback - Optional callback function to report progress
-     * @param {string[]} root0.urls - Array of URLs to generate critical CSS for
-     * @param {Viewport[]} root0.viewports - Array of viewport sizes to consider
-     * @param {FilterSpec} root0.filters - Optional filters to apply to the CSS
-     * @param {number} root0.successRatio - Ratio of successful URLs required (default: 1)
-     * @param {number} root0.maxPages - Maximum number of pages to process (default: 10)
-     * @returns {Promise<[string, Error[]]>} A promise that resolves to an array containing the critical CSS string and an array of errors.
+     * @param {Function}         root0.progressCallback - Optional callback function to report progress
+     * @param {string[]}         root0.urls             - Array of URLs to generate critical CSS for
+     * @param {Viewport[]}       root0.viewports        - Array of viewport sizes to consider
+     * @param {FilterSpec}       root0.filters          - Optional filters to apply to the CSS
+     * @param {number}           root0.successRatio     - Ratio of successful URLs required (default: 1)
+     * @param {number}           root0.maxPages         - Maximum number of pages to process (default: 10)
+     * @return {Promise<[string, Error[]]>} A promise that resolves to an array containing the critical CSS string and an array of errors.
      */
     async function generateCriticalCSS({ browserInterface, progressCallback, urls, viewports, filters, successRatio = 1, maxPages = 10, }) {
         // Success threshold is calculated based on the success ratio of "the number of URLs provided", or "maxPages" whichever is lower.

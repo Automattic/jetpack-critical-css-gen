@@ -16,7 +16,7 @@ export declare class BrowserInterfacePlaywright extends BrowserInterface {
      * Creates a new BrowserInterfacePlaywright instance.
      *
      * @param {BrowserContext} context - The playwright browser context to work with.
-     * @param {string[]} urls - Array of urls to evaluate. The reason we are taking this as an argument is because we want to load all of them in parallel.
+     * @param {string[]}       urls    - Array of urls to evaluate. The reason we are taking this as an argument is because we want to load all of them in parallel.
      */
     constructor(context: BrowserContext, urls: string[]);
     private getTabs;
@@ -27,7 +27,7 @@ export declare class BrowserInterfacePlaywright extends BrowserInterface {
      *
      * @param {BrowserContext} context - Browser context to use.
      * @param {string[]}       urls    - Array of urls to open.
-     * @returns {Promise< TabsByUrl >} Promise resolving to the browser context.
+     * @return {Promise< TabsByUrl >} Promise resolving to the browser context.
      */
     private openUrls;
     /**
@@ -35,7 +35,7 @@ export declare class BrowserInterfacePlaywright extends BrowserInterface {
      *
      * @param {BrowserContext} browserContext - Browser context to use.
      * @param {string}         url            - Url to open.
-     * @returns {Promise<Page>} Promise resolving to the page instance.
+     * @return {Promise<Page>} Promise resolving to the page instance.
      */
     private newTab;
     runInPage<ReturnType>(pageUrl: string, viewport: Viewport | null, method: BrowserRunnable<ReturnType>, ...args: unknown[]): Promise<ReturnType>;
@@ -46,7 +46,7 @@ export declare class BrowserInterfacePlaywright extends BrowserInterface {
      * @param {string} url     - URL to fetch.
      * @param {object} options - Fetch options.
      * @param {string} _role   - 'css' or 'html' indicating what kind of thing is being fetched.
-     * @returns {Promise<Response>} A promise that resolves to the fetch response.
+     * @return {Promise<Response>} A promise that resolves to the fetch response.
      */
     fetch(url: string, options: FetchOptions, _role: 'css' | 'html'): Promise<Response>;
     private isOkStatus;

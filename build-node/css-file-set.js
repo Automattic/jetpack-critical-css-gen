@@ -73,7 +73,7 @@ export class CSSFileSet {
      * Collates an object describing the selectors found in the CSS files in this set, and which
      * HTML page URLs include them (via CSS files)
      *
-     * @returns {object} - An object with selector text keys, each containing a Set of page URLs (strings)
+     * @return {object} - An object with selector text keys, each containing a Set of page URLs (strings)
      */
     collateSelectorPages() {
         const selectors = {};
@@ -103,7 +103,7 @@ export class CSSFileSet {
      * set of selectors that are worth keeping. (i.e.: appear above the fold).
      *
      * @param {Set<string>} usefulSelectors - Set of selectors to keep.
-     * @returns {StyleAST[]} Array of pruned StyleAST objects.
+     * @return {StyleAST[]} Array of pruned StyleAST objects.
      */
     prunedAsts(usefulSelectors) {
         // Perform basic pruning.
@@ -201,7 +201,7 @@ export class CSSFileSet {
     /**
      * Returns a list of errors that occurred while fetching or parsing these CSS files.
      *
-     * @returns {Error[]} - List of errors that occurred.
+     * @return {Error[]} - List of errors that occurred.
      */
     getErrors() {
         return this.errors;

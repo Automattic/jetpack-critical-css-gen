@@ -29,14 +29,14 @@ export declare class StyleAST {
      *
      * @param {Set< string >} criticalSelectors - Set of selectors to keep in the new AST.
      *
-     * @returns {StyleAST} - New AST with pruned contents.
+     * @return {StyleAST} - New AST with pruned contents.
      */
     pruned(criticalSelectors: Set<string>): StyleAST;
     /**
      * Given an AST node, returns the original text it was compiled from in the source CSS.
      *
      * @param {object} node - Node from the AST.
-     * @returns {string} original text the node was compiled from.
+     * @return {string} original text the node was compiled from.
      */
     originalText(node: csstree.CssNode): string;
     /**
@@ -62,12 +62,12 @@ export declare class StyleAST {
      * that were removed.
      *
      * @param {Set< string >} usedVariables - Set of used variables to keep.
-     * @returns {number} variables pruned.
+     * @return {number} variables pruned.
      */
     pruneUnusedVariables(usedVariables: Set<string>): number;
     /**
      * Find all variables that are used and return them as a Set.
-     * @returns {Set< string >} Set of used variables.
+     * @return {Set< string >} Set of used variables.
      */
     getUsedVariables(): Set<string>;
     /**
@@ -88,7 +88,7 @@ export declare class StyleAST {
      * Returns true if the given CSS rule object relates to animation keyframes.
      *
      * @param {csstree.WalkContext} rule - CSS rule.
-     * @returns {boolean} True if the rule is a keyframe rule, false otherwise.
+     * @return {boolean} True if the rule is a keyframe rule, false otherwise.
      */
     static isKeyframeRule(rule: csstree.WalkContext): boolean;
     /**
@@ -122,13 +122,13 @@ export declare class StyleAST {
     /**
      * Returns a count of the rules in this Style AST.
      *
-     * @returns {number} rules in this AST.
+     * @return {number} rules in this AST.
      */
     ruleCount(): number;
     /**
      * Returns a list of font families that are used by any rule in this AST.
      *
-     * @returns {Set<string>} Set of used fonts.
+     * @return {Set<string>} Set of used fonts.
      */
     getUsedFontFamilies(): Set<string>;
     /**
@@ -136,7 +136,7 @@ export declare class StyleAST {
      * string types if present.
      *
      * @param {csstree.CssNode} node - AST node.
-     * @returns {string} The value of the node as a string.
+     * @return {string} The value of the node as a string.
      */
     static readValue(node: csstree.CssNode): string;
     /**
@@ -144,13 +144,13 @@ export declare class StyleAST {
      *
      * @param {object} mediaQueryNode - Media Query AST node to examine.
      *
-     * @returns {boolean} true if the media query is relevant to screens.
+     * @return {boolean} true if the media query is relevant to screens.
      */
     static isUsefulMediaQuery(mediaQueryNode: csstree.MediaQuery): boolean;
     /**
      * Returns this AST converted to CSS.
      *
-     * @returns {string} this AST represented in CSS.
+     * @return {string} this AST represented in CSS.
      */
     toCSS(): string;
     /**
@@ -158,7 +158,7 @@ export declare class StyleAST {
      *
      * @param {string} css - CSS to parse.
      *
-     * @returns {StyleAST} new parse AST based on the CSS.
+     * @return {StyleAST} new parse AST based on the CSS.
      */
     static parse(css: string): StyleAST;
 }
