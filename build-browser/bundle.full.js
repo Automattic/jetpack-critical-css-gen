@@ -4371,8 +4371,8 @@ var CriticalCSSGenerator = (function (exports) {
 
     var tokenBefore = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        spec: spec,
-        safe: safe
+        safe: safe,
+        spec: spec
     });
 
     const REVERSESOLIDUS = 0x005c; // U+005C REVERSE SOLIDUS (\)
@@ -6113,14 +6113,14 @@ var CriticalCSSGenerator = (function (exports) {
 
     var units = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        length: length,
         angle: angle,
-        time: time$2,
-        frequency: frequency,
-        resolution: resolution,
-        flex: flex,
         decibel: decibel,
-        semitones: semitones
+        flex: flex,
+        frequency: frequency,
+        length: length,
+        resolution: resolution,
+        semitones: semitones,
+        time: time$2
     });
 
     function SyntaxError$1(message, input, offset) {
@@ -7983,9 +7983,9 @@ var CriticalCSSGenerator = (function (exports) {
     var trace = /*#__PURE__*/Object.freeze({
         __proto__: null,
         getTrace: getTrace,
-        isType: isType,
+        isKeyword: isKeyword$1,
         isProperty: isProperty,
-        isKeyword: isKeyword$1
+        isType: isType
     });
 
     function getFirstMatchNode(matchNode) {
@@ -10257,10 +10257,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var AnPlusB = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$F,
         name: name$F,
-        structure: structure$E,
         parse: parse$H,
-        generate: generate$F
+        structure: structure$E
     });
 
     function consumeRaw$5(startToken) {
@@ -10359,11 +10359,11 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Atrule = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$E,
         name: name$E,
-        walkContext: walkContext$9,
-        structure: structure$D,
         parse: parse$G,
-        generate: generate$E
+        structure: structure$D,
+        walkContext: walkContext$9
     });
 
     const name$D = 'AtrulePrelude';
@@ -10411,11 +10411,11 @@ var CriticalCSSGenerator = (function (exports) {
 
     var AtrulePrelude = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$D,
         name: name$D,
-        walkContext: walkContext$8,
-        structure: structure$C,
         parse: parse$F,
-        generate: generate$D
+        structure: structure$C,
+        walkContext: walkContext$8
     });
 
     const DOLLARSIGN$1 = 0x0024;       // U+0024 DOLLAR SIGN ($)
@@ -10560,10 +10560,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var AttributeSelector = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$C,
         name: name$C,
-        structure: structure$B,
         parse: parse$E,
-        generate: generate$C
+        structure: structure$B
     });
 
     const AMPERSAND$4 = 0x0026;       // U+0026 AMPERSAND (&)
@@ -10655,11 +10655,11 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Block = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$B,
         name: name$B,
-        walkContext: walkContext$7,
-        structure: structure$A,
         parse: parse$D,
-        generate: generate$B
+        structure: structure$A,
+        walkContext: walkContext$7
     });
 
     const name$A = 'Brackets';
@@ -10694,10 +10694,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Brackets = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$A,
         name: name$A,
-        structure: structure$z,
         parse: parse$C,
-        generate: generate$A
+        structure: structure$z
     });
 
     const name$z = 'CDC';
@@ -10720,10 +10720,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var CDC = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$z,
         name: name$z,
-        structure: structure$y,
         parse: parse$B,
-        generate: generate$z
+        structure: structure$y
     });
 
     const name$y = 'CDO';
@@ -10746,10 +10746,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var CDO = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$y,
         name: name$y,
-        structure: structure$x,
         parse: parse$A,
-        generate: generate$y
+        structure: structure$x
     });
 
     const FULLSTOP$2 = 0x002E; // U+002E FULL STOP (.)
@@ -10777,10 +10777,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var ClassSelector = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$x,
         name: name$x,
-        structure: structure$w,
         parse: parse$z,
-        generate: generate$x
+        structure: structure$w
     });
 
     const PLUSSIGN$4 = 0x002B;        // U+002B PLUS SIGN (+)
@@ -10838,10 +10838,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Combinator = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$w,
         name: name$w,
-        structure: structure$v,
         parse: parse$y,
-        generate: generate$w
+        structure: structure$v
     });
 
     const ASTERISK$4 = 0x002A;        // U+002A ASTERISK (*)
@@ -10878,10 +10878,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Comment = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$v,
         name: name$v,
-        structure: structure$u,
         parse: parse$x,
-        generate: generate$v
+        structure: structure$u
     });
 
     const EXCLAMATIONMARK$1 = 0x0021; // U+0021 EXCLAMATION MARK (!)
@@ -11042,11 +11042,11 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Declaration = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$u,
         name: name$u,
-        walkContext: walkContext$6,
-        structure: structure$t,
         parse: parse$w,
-        generate: generate$u
+        structure: structure$t,
+        walkContext: walkContext$6
     });
 
     const AMPERSAND$2 = 0x0026;       // U+0026 AMPERSAND (&)
@@ -11105,10 +11105,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var DeclarationList = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$t,
         name: name$t,
-        structure: structure$s,
         parse: parse$v,
-        generate: generate$t
+        structure: structure$s
     });
 
     const name$s = 'Dimension';
@@ -11135,10 +11135,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Dimension = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$s,
         name: name$s,
-        structure: structure$r,
         parse: parse$u,
-        generate: generate$s
+        structure: structure$r
     });
 
     const name$r = 'Function';
@@ -11179,11 +11179,11 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Function = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$r,
         name: name$r,
-        walkContext: walkContext$5,
-        structure: structure$q,
         parse: parse$t,
-        generate: generate$r
+        structure: structure$q,
+        walkContext: walkContext$5
     });
 
     // '#' ident
@@ -11209,11 +11209,11 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Hash = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        xxx: xxx,
+        generate: generate$q,
         name: name$q,
-        structure: structure$p,
         parse: parse$s,
-        generate: generate$q
+        structure: structure$p,
+        xxx: xxx
     });
 
     const name$p = 'Identifier';
@@ -11235,10 +11235,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Identifier = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$p,
         name: name$p,
-        structure: structure$o,
         parse: parse$r,
-        generate: generate$p
+        structure: structure$o
     });
 
     const name$o = 'IdSelector';
@@ -11268,10 +11268,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var IdSelector = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$o,
         name: name$o,
-        structure: structure$n,
         parse: parse$q,
-        generate: generate$o
+        structure: structure$n
     });
 
     const name$n = 'MediaFeature';
@@ -11344,10 +11344,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var MediaFeature = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$n,
         name: name$n,
-        structure: structure$m,
         parse: parse$p,
-        generate: generate$n
+        structure: structure$m
     });
 
     const name$m = 'MediaQuery';
@@ -11405,10 +11405,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var MediaQuery = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$m,
         name: name$m,
-        structure: structure$l,
         parse: parse$o,
-        generate: generate$m
+        structure: structure$l
     });
 
     const name$l = 'MediaQueryList';
@@ -11446,10 +11446,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var MediaQueryList = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$l,
         name: name$l,
-        structure: structure$k,
         parse: parse$n,
-        generate: generate$l
+        structure: structure$k
     });
 
     const AMPERSAND$1 = 0x0026;       // U+0026 AMPERSAND (&)
@@ -11475,10 +11475,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var NestingSelector = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$k,
         name: name$k,
-        structure: structure$j,
         parse: parse$m,
-        generate: generate$k
+        structure: structure$j
     });
 
     const name$j = 'Nth';
@@ -11529,10 +11529,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Nth = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$j,
         name: name$j,
-        structure: structure$i,
         parse: parse$l,
-        generate: generate$j
+        structure: structure$i
     });
 
     const name$i = 'Number';
@@ -11554,10 +11554,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Number$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$i,
         name: name$i,
-        structure: structure$h,
         parse: parse$k,
-        generate: generate$i
+        structure: structure$h
     });
 
     // '/' | '*' | ',' | ':' | '+' | '-'
@@ -11584,10 +11584,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Operator = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$h,
         name: name$h,
-        structure: structure$g,
         parse: parse$j,
-        generate: generate$h
+        structure: structure$g
     });
 
     const name$g = 'Parentheses';
@@ -11622,10 +11622,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Parentheses = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$g,
         name: name$g,
-        structure: structure$f,
         parse: parse$i,
-        generate: generate$g
+        structure: structure$f
     });
 
     const name$f = 'Percentage';
@@ -11647,10 +11647,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Percentage = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$f,
         name: name$f,
-        structure: structure$e,
         parse: parse$h,
-        generate: generate$f
+        structure: structure$e
     });
 
     const name$e = 'PseudoClassSelector';
@@ -11711,11 +11711,11 @@ var CriticalCSSGenerator = (function (exports) {
 
     var PseudoClassSelector = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$e,
         name: name$e,
-        walkContext: walkContext$4,
-        structure: structure$d,
         parse: parse$g,
-        generate: generate$e
+        structure: structure$d,
+        walkContext: walkContext$4
     });
 
     const name$d = 'PseudoElementSelector';
@@ -11778,11 +11778,11 @@ var CriticalCSSGenerator = (function (exports) {
 
     var PseudoElementSelector = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$d,
         name: name$d,
-        walkContext: walkContext$3,
-        structure: structure$c,
         parse: parse$f,
-        generate: generate$d
+        structure: structure$c,
+        walkContext: walkContext$3
     });
 
     const SOLIDUS$2 = 0x002F;  // U+002F SOLIDUS (/)
@@ -11845,10 +11845,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Ratio = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$c,
         name: name$c,
-        structure: structure$b,
         parse: parse$e,
-        generate: generate$c
+        structure: structure$b
     });
 
     function getOffsetExcludeWS() {
@@ -11893,10 +11893,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Raw = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$b,
         name: name$b,
-        structure: structure$a,
         parse: parse$d,
-        generate: generate$b
+        structure: structure$a
     });
 
     function consumeRaw$2(startToken) {
@@ -11950,11 +11950,11 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Rule = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$a,
         name: name$a,
-        walkContext: walkContext$2,
-        structure: structure$9,
         parse: parse$c,
-        generate: generate$a
+        structure: structure$9,
+        walkContext: walkContext$2
     });
 
     const name$9 = 'Selector';
@@ -11992,10 +11992,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Selector$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$9,
         name: name$9,
-        structure: structure$8,
         parse: parse$b,
-        generate: generate$9
+        structure: structure$8
     });
 
     const name$8 = 'SelectorList';
@@ -12034,11 +12034,11 @@ var CriticalCSSGenerator = (function (exports) {
 
     var SelectorList = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$8,
         name: name$8,
-        walkContext: walkContext$1,
-        structure: structure$7,
         parse: parse$a,
-        generate: generate$8
+        structure: structure$7,
+        walkContext: walkContext$1
     });
 
     const REVERSE_SOLIDUS$1 = 0x005c; // U+005C REVERSE SOLIDUS (\)
@@ -12152,10 +12152,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var String$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$7,
         name: name$7,
-        structure: structure$6,
         parse: parse$9,
-        generate: generate$7
+        structure: structure$6
     });
 
     const EXCLAMATIONMARK = 0x0021; // U+0021 EXCLAMATION MARK (!)
@@ -12234,11 +12234,11 @@ var CriticalCSSGenerator = (function (exports) {
 
     var StyleSheet = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$6,
         name: name$6,
-        walkContext: walkContext,
-        structure: structure$5,
         parse: parse$8,
-        generate: generate$6
+        structure: structure$5,
+        walkContext: walkContext
     });
 
     const ASTERISK$2 = 0x002A;     // U+002A ASTERISK (*)
@@ -12294,10 +12294,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var TypeSelector = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$5,
         name: name$5,
-        structure: structure$4,
         parse: parse$7,
-        generate: generate$5
+        structure: structure$4
     });
 
     const PLUSSIGN$2 = 0x002B;     // U+002B PLUS SIGN (+)
@@ -12451,10 +12451,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var UnicodeRange = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$4,
         name: name$4,
-        structure: structure$3,
         parse: parse$6,
-        generate: generate$4
+        structure: structure$3
     });
 
     const SPACE$1 = 0x0020;            // U+0020 SPACE
@@ -12604,10 +12604,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Url$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$3,
         name: name$3,
-        structure: structure$2,
         parse: parse$5,
-        generate: generate$3
+        structure: structure$2
     });
 
     const name$2 = 'Value';
@@ -12632,10 +12632,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var Value = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$2,
         name: name$2,
-        structure: structure$1,
         parse: parse$4,
-        generate: generate$2
+        structure: structure$1
     });
 
     const SPACE = Object.freeze({
@@ -12666,10 +12666,10 @@ var CriticalCSSGenerator = (function (exports) {
 
     var WhiteSpace = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        generate: generate$1,
         name: name$1,
-        structure: structure,
         parse: parse$3,
-        generate: generate$1
+        structure: structure
     });
 
     var node$1 = /*#__PURE__*/Object.freeze({
@@ -12690,8 +12690,8 @@ var CriticalCSSGenerator = (function (exports) {
         Dimension: Dimension,
         Function: Function,
         Hash: Hash,
-        Identifier: Identifier,
         IdSelector: IdSelector,
+        Identifier: Identifier,
         MediaFeature: MediaFeature,
         MediaQuery: MediaQuery,
         MediaQueryList: MediaQueryList,
@@ -13186,8 +13186,8 @@ var CriticalCSSGenerator = (function (exports) {
         Dimension: parse$u,
         Function: parse$t,
         Hash: parse$s,
-        Identifier: parse$r,
         IdSelector: parse$q,
+        Identifier: parse$r,
         MediaFeature: parse$p,
         MediaQuery: parse$o,
         MediaQueryList: parse$n,
@@ -14524,24 +14524,24 @@ var CriticalCSSGenerator = (function (exports) {
 
     var _polyfillNode_os$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
+        EOL: EOL,
+        arch: arch,
+        cpus: cpus,
+        default: _polyfillNode_os,
         endianness: endianness,
+        freemem: freemem,
+        getNetworkInterfaces: getNetworkInterfaces,
+        homedir: homedir,
         hostname: hostname,
         loadavg: loadavg,
-        uptime: uptime,
-        freemem: freemem,
-        totalmem: totalmem,
-        cpus: cpus,
-        type: type,
-        release: release,
         networkInterfaces: networkInterfaces,
-        getNetworkInterfaces: getNetworkInterfaces,
-        arch: arch,
         platform: platform,
+        release: release,
         tmpDir: tmpDir,
         tmpdir: tmpdir,
-        EOL: EOL,
-        homedir: homedir,
-        'default': _polyfillNode_os
+        totalmem: totalmem,
+        type: type,
+        uptime: uptime
     });
 
     var require$$1$3 = /*@__PURE__*/getAugmentedNamespace(_polyfillNode_os$1);
@@ -27450,6 +27450,26 @@ var CriticalCSSGenerator = (function (exports) {
     };
 
     // Copyright Joyent, Inc. and other Node contributors.
+    //
+    // Permission is hereby granted, free of charge, to any person obtaining a
+    // copy of this software and associated documentation files (the
+    // "Software"), to deal in the Software without restriction, including
+    // without limitation the rights to use, copy, modify, merge, publish,
+    // distribute, sublicense, and/or sell copies of the Software, and to permit
+    // persons to whom the Software is furnished to do so, subject to the
+    // following conditions:
+    //
+    // The above copyright notice and this permission notice shall be included
+    // in all copies or substantial portions of the Software.
+    //
+    // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    // OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+    // NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+    // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+    // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+    // USE OR OTHER DEALINGS IN THE SOFTWARE.
+
     var isBufferEncoding = Buffer.isEncoding
       || function(encoding) {
            switch (encoding && encoding.toLowerCase()) {
@@ -28536,6 +28556,9 @@ var CriticalCSSGenerator = (function (exports) {
     }
 
     // A bit simpler than readable streams.
+    // Implement an async ._write(chunk, encoding, cb), and it'll handle all
+    // the drain event emission and buffering.
+
     Writable.WritableState = WritableState;
     inherits$1(Writable, EventEmitter);
 
@@ -29047,6 +29070,47 @@ var CriticalCSSGenerator = (function (exports) {
     }
 
     // a transform stream is a readable/writable stream where you do
+    // something with the data.  Sometimes it's called a "filter",
+    // but that's not a great name for it, since that implies a thing where
+    // some bits pass through, and others are simply ignored.  (That would
+    // be a valid example of a transform, of course.)
+    //
+    // While the output is causally related to the input, it's not a
+    // necessarily symmetric or synchronous transformation.  For example,
+    // a zlib stream might take multiple plain-text writes(), and then
+    // emit a single compressed chunk some time in the future.
+    //
+    // Here's how this works:
+    //
+    // The Transform stream has all the aspects of the readable and writable
+    // stream classes.  When you write(chunk), that calls _write(chunk,cb)
+    // internally, and returns false if there's a lot of pending writes
+    // buffered up.  When you call read(), that calls _read(n) until
+    // there's enough pending readable data buffered up.
+    //
+    // In a transform stream, the written data is placed in a buffer.  When
+    // _read(n) is called, it transforms the queued up data, calling the
+    // buffered _write cb's as it consumes chunks.  If consuming a single
+    // written chunk would result in multiple output chunks, then the first
+    // outputted bit calls the readcb, and subsequent chunks just go into
+    // the read buffer, and will cause it to emit 'readable' if necessary.
+    //
+    // This way, back-pressure is actually determined by the reading side,
+    // since _read has to be called to start processing a new chunk.  However,
+    // a pathological inflate type of transform can cause excessive buffering
+    // here.  For example, imagine a stream where every byte of input is
+    // interpreted as an integer from 0-255, and then results in that many
+    // bytes of output.  Writing the 4 bytes {ff,ff,ff,ff} would result in
+    // 1kb of data being output.  In this case, you could write a very small
+    // amount of input, and end up with a very large amount of output.  In
+    // such a pathological inflating mechanism, there'd be no way to tell
+    // the system to stop doing the transform.  A single 4MB write could
+    // cause the system to run out of memory.
+    //
+    // However, even in such a pathological case, only a single written chunk
+    // would be consumed, and then the rest would wait (un-transformed) until
+    // the results of the previous transformed chunk were consumed.
+
     inherits$1(Transform, Duplex);
 
     function TransformState(stream) {
@@ -29465,6 +29529,7 @@ var CriticalCSSGenerator = (function (exports) {
     };
 
     // from https://github.com/jhiesey/to-arraybuffer/blob/6502d9850e70ba7935a7df4ad86b358fc216f9f0/index.js
+
     function toArrayBuffer (buf) {
       // If the buffer is backed by a Uint8Array, a faster version will work
       if (buf instanceof Uint8Array) {
@@ -30942,15 +31007,15 @@ var CriticalCSSGenerator = (function (exports) {
 
     var _polyfillNode_url$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        parse: urlParse,
-        resolve: urlResolve,
-        resolveObject: urlResolveObject,
-        fileURLToPath: urlFileURLToPath,
-        format: urlFormat,
         URL: URL$1,
         URLSearchParams: URLSearchParams,
-        'default': _polyfillNode_url,
-        Url: Url
+        Url: Url,
+        default: _polyfillNode_url,
+        fileURLToPath: urlFileURLToPath,
+        format: urlFormat,
+        parse: urlParse,
+        resolve: urlResolve,
+        resolveObject: urlResolveObject
     });
 
     function request$1(opts, cb) {
@@ -31091,12 +31156,12 @@ var CriticalCSSGenerator = (function (exports) {
 
     var _polyfillNode_http$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        request: request$1,
-        get: get$1,
         Agent: Agent$1,
         METHODS: METHODS$1,
         STATUS_CODES: STATUS_CODES$1,
-        'default': _polyfillNode_http
+        default: _polyfillNode_http,
+        get: get$1,
+        request: request$1
     });
 
     var require$$0$1 = /*@__PURE__*/getAugmentedNamespace(_polyfillNode_http$1);
@@ -31239,12 +31304,12 @@ var CriticalCSSGenerator = (function (exports) {
 
     var _polyfillNode_https$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        request: request,
-        get: get,
         Agent: Agent,
         METHODS: METHODS,
         STATUS_CODES: STATUS_CODES,
-        'default': _polyfillNode_https
+        default: _polyfillNode_https,
+        get: get,
+        request: request
     });
 
     var require$$1$2 = /*@__PURE__*/getAugmentedNamespace(_polyfillNode_https$1);
@@ -31669,17 +31734,17 @@ var CriticalCSSGenerator = (function (exports) {
 
     var _polyfillNode_path$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        resolve: resolve,
-        normalize: normalize$1,
-        isAbsolute: isAbsolute$1,
-        join: join,
-        relative: relative$1,
-        sep: sep,
+        basename: basename,
+        default: _polyfillNode_path,
         delimiter: delimiter,
         dirname: dirname,
-        basename: basename,
         extname: extname,
-        'default': _polyfillNode_path
+        isAbsolute: isAbsolute$1,
+        join: join,
+        normalize: normalize$1,
+        relative: relative$1,
+        resolve: resolve,
+        sep: sep
     });
 
     var require$$1 = /*@__PURE__*/getAugmentedNamespace(_polyfillNode_path$1);
@@ -32386,7 +32451,7 @@ var CriticalCSSGenerator = (function (exports) {
      * element is O(1). Removing elements from the set is not supported. Only
      * strings are supported for membership.
      */
-    class ArraySet$2 {
+    let ArraySet$2 = class ArraySet {
       constructor() {
         this._array = [];
         this._set = new Map();
@@ -32396,7 +32461,7 @@ var CriticalCSSGenerator = (function (exports) {
        * Static method for creating ArraySet instances from an existing array.
        */
       static fromArray(aArray, aAllowDuplicates) {
-        const set = new ArraySet$2();
+        const set = new ArraySet();
         for (let i = 0, len = aArray.length; i < len; i++) {
           set.add(aArray[i], aAllowDuplicates);
         }
@@ -32471,7 +32536,7 @@ var CriticalCSSGenerator = (function (exports) {
       toArray() {
         return this._array.slice();
       }
-    }
+    };
     arraySet.ArraySet = ArraySet$2;
 
     var mappingList = {};
@@ -32505,7 +32570,7 @@ var CriticalCSSGenerator = (function (exports) {
      * performance conscious manner. It trades a negligible overhead in general
      * case for a large speedup in case of mappings being added in order.
      */
-    class MappingList$1 {
+    let MappingList$1 = class MappingList {
       constructor() {
         this._array = [];
         this._sorted = true;
@@ -32554,7 +32619,7 @@ var CriticalCSSGenerator = (function (exports) {
         }
         return this._array;
       }
-    }
+    };
 
     mappingList.MappingList = MappingList$1;
 
@@ -32579,7 +32644,7 @@ var CriticalCSSGenerator = (function (exports) {
      *   - file: The filename of the generated source.
      *   - sourceRoot: A root for all relative URLs in this source map.
      */
-    class SourceMapGenerator$2 {
+    let SourceMapGenerator$2 = class SourceMapGenerator {
       constructor(aArgs) {
         if (!aArgs) {
           aArgs = {};
@@ -32600,7 +32665,7 @@ var CriticalCSSGenerator = (function (exports) {
        */
       static fromSourceMap(aSourceMapConsumer) {
         const sourceRoot = aSourceMapConsumer.sourceRoot;
-        const generator = new SourceMapGenerator$2({
+        const generator = new SourceMapGenerator({
           file: aSourceMapConsumer.file,
           sourceRoot
         });
@@ -32962,7 +33027,7 @@ var CriticalCSSGenerator = (function (exports) {
       toString() {
         return JSON.stringify(this.toJSON());
       }
-    }
+    };
 
     SourceMapGenerator$2.prototype._version = 3;
     sourceMapGenerator.SourceMapGenerator = SourceMapGenerator$2;
@@ -33090,7 +33155,7 @@ var CriticalCSSGenerator = (function (exports) {
 
     var _polyfillNode_fs$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        'default': _polyfillNode_fs
+        default: _polyfillNode_fs
     });
 
     var require$$0 = /*@__PURE__*/getAugmentedNamespace(_polyfillNode_fs$1);
@@ -33270,7 +33335,7 @@ var CriticalCSSGenerator = (function (exports) {
 
     const INTERNAL = Symbol("smcInternal");
 
-    class SourceMapConsumer$1 {
+    let SourceMapConsumer$1 = class SourceMapConsumer {
       constructor(aSourceMap, aSourceMapURL) {
         // If the constructor was called by super(), just return Promise<this>.
         // Yes, this is a hack to retain the pre-existing API of the base-class
@@ -33321,7 +33386,7 @@ var CriticalCSSGenerator = (function (exports) {
        * ```
        */
       static async with(rawSourceMap, sourceMapUrl, f) {
-        const consumer = await new SourceMapConsumer$1(rawSourceMap, sourceMapUrl);
+        const consumer = await new SourceMapConsumer(rawSourceMap, sourceMapUrl);
         try {
           return await f(consumer);
         } finally {
@@ -33387,7 +33452,7 @@ var CriticalCSSGenerator = (function (exports) {
       destroy() {
         throw new Error("Subclasses must implement destroy");
       }
-    }
+    };
 
     /**
      * The version of the source mapping spec that we are consuming.
@@ -34972,11 +35037,11 @@ var CriticalCSSGenerator = (function (exports) {
     var REMOTE_RESOURCE_PATTERN = /^(\w+:\/\/|\/\/)/;
     var FILE_RESOURCE_PATTERN = /^file:\/\//;
 
-    function isRemoteResource$5(uri) {
+    function isRemoteResource$4(uri) {
       return REMOTE_RESOURCE_PATTERN.test(uri) && !FILE_RESOURCE_PATTERN.test(uri);
     }
 
-    var isRemoteResource_1 = isRemoteResource$5;
+    var isRemoteResource_1 = isRemoteResource$4;
 
     var NO_PROTOCOL_RESOURCE_PATTERN = /^\/\//;
 
@@ -34989,7 +35054,7 @@ var CriticalCSSGenerator = (function (exports) {
     var path$6 = require$$1;
     var url$2 = require$$1$1;
 
-    var isRemoteResource$4 = isRemoteResource_1;
+    var isRemoteResource$3 = isRemoteResource_1;
     var hasProtocol$3 = hasProtocol_1;
 
     var HTTP_PROTOCOL = 'http:';
@@ -35059,7 +35124,7 @@ var CriticalCSSGenerator = (function (exports) {
     }
 
     function isRemoteRule(rule) {
-      return isRemoteResource$4(rule) || url$2.parse(HTTP_PROTOCOL + '//' + rule).host == rule;
+      return isRemoteResource$3(rule) || url$2.parse(HTTP_PROTOCOL + '//' + rule).host == rule;
     }
 
     var isAllowedResource_1 = isAllowedResource$3;
@@ -35122,7 +35187,7 @@ var CriticalCSSGenerator = (function (exports) {
     var Token$3 = token;
     var hasProtocol$2 = hasProtocol_1;
     var isDataUriResource$1 = isDataUriResource_1;
-    var isRemoteResource$3 = isRemoteResource_1;
+    var isRemoteResource$2 = isRemoteResource_1;
 
     var MAP_MARKER_PATTERN = /^\/\*# sourceMappingURL=(\S+) \*\/$/;
 
@@ -35209,7 +35274,7 @@ var CriticalCSSGenerator = (function (exports) {
       if (isDataUriResource$1(uri)) {
         sourceMap = extractInputSourceMapFromDataUri(uri);
         return whenSourceMapReady(sourceMap);
-      } if (isRemoteResource$3(uri)) {
+      } if (isRemoteResource$2(uri)) {
         return loadInputSourceMapFromRemoteUri(uri, applyContext, function(sourceMap) {
           var parsedMap;
 
@@ -35400,7 +35465,7 @@ var CriticalCSSGenerator = (function (exports) {
     var isAllowedResource$1 = isAllowedResource_1;
 
     var hasProtocol$1 = hasProtocol_1;
-    var isRemoteResource$2 = isRemoteResource_1;
+    var isRemoteResource$1 = isRemoteResource_1;
 
     function loadOriginalSources$1(context, callback) {
       var loadContext = {
@@ -35466,7 +35531,7 @@ var CriticalCSSGenerator = (function (exports) {
     function loadOriginalSource(uri, loadContext) {
       var content;
 
-      if (isRemoteResource$2(uri)) {
+      if (isRemoteResource$1(uri)) {
         return loadOriginalSourceFromRemoteUri(uri, loadContext, function(content) {
           loadContext.index++;
           loadContext.sourcesContent[uri] = content;
@@ -35557,8 +35622,6 @@ var CriticalCSSGenerator = (function (exports) {
     var URL_SUFFIX_PATTERN = /\)$/;
     var WHITESPACE_PATTERN = /\s/;
 
-    var isWindows$1 = browser$1.platform == 'win32';
-
     function rebase$2(uri, rebaseConfig) {
       if (!rebaseConfig) {
         return uri;
@@ -35608,7 +35671,7 @@ var CriticalCSSGenerator = (function (exports) {
     }
 
     function normalize(uri) {
-      return isWindows$1 ? uri.replace(/\\/g, '/') : uri;
+      return uri;
     }
 
     function quoteFor(unquotedUrl) {
@@ -36643,7 +36706,7 @@ var CriticalCSSGenerator = (function (exports) {
     var Marker = marker;
     var hasProtocol = hasProtocol_1;
     var isImport = isImport_1;
-    var isRemoteResource$1 = isRemoteResource_1;
+    var isRemoteResource = isRemoteResource_1;
 
     var UNKNOWN_URI = 'uri:unknown';
     var FILE_RESOURCE_PROTOCOL = 'file://';
@@ -36724,7 +36787,7 @@ var CriticalCSSGenerator = (function (exports) {
       var relativeToCurrentPath;
       var normalizedUri;
 
-      if (isRemoteResource$1(uri)) {
+      if (isRemoteResource(uri)) {
         return uri;
       }
 
@@ -36741,7 +36804,7 @@ var CriticalCSSGenerator = (function (exports) {
       var parsedMap = typeof sourceMap == 'string'
         ? JSON.parse(sourceMap)
         : sourceMap;
-      var rebasedMap = isRemoteResource$1(uri)
+      var rebasedMap = isRemoteResource(uri)
         ? rebaseRemoteMap(parsedMap, uri)
         : rebaseLocalMap(parsedMap, uri || UNKNOWN_URI, context.options.rebaseTo);
 
@@ -36759,7 +36822,7 @@ var CriticalCSSGenerator = (function (exports) {
       if (!context.source) {
         rebaseConfig.fromBase = path.resolve('');
         rebaseConfig.toBase = context.options.rebaseTo;
-      } else if (isRemoteResource$1(context.source)) {
+      } else if (isRemoteResource(context.source)) {
         rebaseConfig.fromBase = context.source;
         rebaseConfig.toBase = context.source;
       } else if (path.isAbsolute(context.source)) {
@@ -36832,7 +36895,7 @@ var CriticalCSSGenerator = (function (exports) {
       var mediaQuery = uriAndMediaQuery[1];
       var metadata = token[2];
 
-      return isRemoteResource$1(uri)
+      return isRemoteResource(uri)
         ? inlineRemoteStylesheet(uri, mediaQuery, metadata, inlinerContext)
         : inlineLocalStylesheet(uri, mediaQuery, metadata, inlinerContext);
     }
@@ -37021,14 +37084,7 @@ var CriticalCSSGenerator = (function (exports) {
 
     var SourceMapGenerator = sourceMap.SourceMapGenerator;
     var all = helpers$1.all;
-
-    var isRemoteResource = isRemoteResource_1;
-
-    var isWindows = browser$1.platform == 'win32';
-
-    var NIX_SEPARATOR_PATTERN = /\//g;
     var UNKNOWN_SOURCE = '$stdin';
-    var WINDOWS_SEPARATOR = '\\';
 
     function store(serializeContext, element) {
       var fromString = typeof element == 'string';
@@ -37071,10 +37127,6 @@ var CriticalCSSGenerator = (function (exports) {
       var originalSource = mapping[2];
       var source = originalSource;
       var storedSource = source || UNKNOWN_SOURCE;
-
-      if (isWindows && source && !isRemoteResource(source)) {
-        storedSource = source.replace(NIX_SEPARATOR_PATTERN, WINDOWS_SEPARATOR);
-      }
 
       serializeContext.outputMap.addMapping({
         generated: {
@@ -37558,8 +37610,6 @@ var CriticalCSSGenerator = (function (exports) {
     exports.XFrameDenyError = XFrameDenyError;
     exports.generateCriticalCSS = generateCriticalCSS;
     exports.version = version;
-
-    Object.defineProperty(exports, '__esModule', { value: true });
 
     return exports;
 
