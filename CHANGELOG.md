@@ -5,21 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.2.0-alpha] - unreleased
-
-This is an alpha version! The changes listed here are not final.
+## [1.0.0] - 2024-10-07
 
 ### Security
-- Security: Fix XSS vulnerability.
+
+- Security: Fix XSS vulnerability. [#39507]
 
 ### Added
-- Add /playwright entry point for BrowserInterfacePlaywright.
+
+- Add /playwright entry point for BrowserInterfacePlaywright. [#39509]
 
 ### Changed
-- Change default entry point of package to include BrowserInterfaceIframe instead of BrowserInterfacePlaywright.
+
+- Change default entry point of package to include BrowserInterfaceIframe instead of BrowserInterfacePlaywright. [#39509]
 
 ## 0.1.0 - 2024-09-24
 ### Added
 - Initial version. [#38429]
 
-[0.2.0-alpha]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v0.1.0...v0.2.0-alpha
+[1.0.0]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v0.1.0...v1.0.0
