@@ -12,6 +12,9 @@ This is an alpha version! The changes listed here are not final.
 ### Changed
 - Updated package dependencies.
 
+### Fixed
+- Add missing build folder to package.
+
 ## [1.0.0] - 2024-10-07
 ### Security
 - Security: Fix XSS vulnerability. [#39507]
