@@ -74,7 +74,7 @@ export class BrowserInterface {
             try {
                 return !!innerWindow.document.querySelector(selectors[selector]);
             }
-            catch (err) {
+            catch {
                 // Ignore invalid selectors.
                 return false;
             }
