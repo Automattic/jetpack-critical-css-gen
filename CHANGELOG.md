@@ -12,6 +12,9 @@ This is an alpha version! The changes listed here are not final.
 ### Changed
 - Updated package dependencies.
 
+### Removed
+- Remove unused prettier dep.
+
 ## [1.0.3] - 2024-11-28
 ### Changed
 - Updated package dependencies. [#40060]
