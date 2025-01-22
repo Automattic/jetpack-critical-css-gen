@@ -7,11 +7,6 @@
 	"require-dev": {
 		"automattic/jetpack-changelogger": "^5.1.0"
 	},
-	"autoload": {
-		"classmap": [
-			"src/"
-		]
-	},
 	"scripts": {
 		"build-development": [
 			"pnpm run build"
