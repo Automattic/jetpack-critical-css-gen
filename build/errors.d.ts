@@ -99,3 +99,11 @@ export declare class XFrameDenyError extends UrlError {
         url: any;
     });
 }
+/**
+ * InvalidURLError - Indicates that a requested URL is invalid.
+ */
+export declare class InvalidURLError extends UrlError {
+    constructor({ url }: {
+        url: string;
+    });
+}

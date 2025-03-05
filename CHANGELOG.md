@@ -12,6 +12,9 @@ This is an alpha version! The changes listed here are not final.
 ### Changed
 - Update dependencies.
 
+### Fixed
+- Critical CSS: Prevent invalid URLs from breaking the whole process.
+
 ## [1.0.6] - 2025-02-12
 ### Changed
 - Updated package dependencies. [#41286]

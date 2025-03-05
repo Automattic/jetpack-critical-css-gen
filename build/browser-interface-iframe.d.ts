@@ -22,8 +22,9 @@ export declare class BrowserInterfaceIframe extends BrowserInterface {
     cleanup(): Promise<void>;
     fetch(url: string, options: RequestInit, _role: 'css' | 'html'): Promise<Response>;
     runInPage<ReturnType>(pageUrl: string, viewport: Viewport | null, method: BrowserRunnable<ReturnType>, ...args: unknown[]): Promise<ReturnType>;
-    addGetParameters(rawUrl: string): string;
+    addGetParameters(url: URL): string;
     diagnoseUrlError(url: string): Promise<UrlError | null>;
+    is404Page(url: string): Promise<boolean>;
     sameOrigin(url: string): boolean;
     loadPage(rawUrl: string): Promise<void>;
     resize({ width, height }: Viewport): Promise<unknown>;

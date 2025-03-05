@@ -100,4 +100,12 @@ export class XFrameDenyError extends UrlError {
         super('XFrameDenyError', { url }, `Failed to load ${url} due to the "X-Frame-Options: DENY" header`);
     }
 }
+/**
+ * InvalidURLError - Indicates that a requested URL is invalid.
+ */
+export class InvalidURLError extends UrlError {
+    constructor({ url }) {
+        super('InvalidURLError', { url }, `Invalid URL: ${url}`);
+    }
+}
 //# sourceMappingURL=errors.js.map
