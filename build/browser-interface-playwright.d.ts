@@ -19,6 +19,7 @@ export declare class BrowserInterfacePlaywright extends BrowserInterface {
      * @param {string[]}       urls    - Array of urls to evaluate. The reason we are taking this as an argument is because we want to load all of them in parallel.
      */
     constructor(context: BrowserContext, urls: string[]);
+    cleanup(): Promise<void>;
     private getTabs;
     /**
      * Open an array of urls in a new browser context.

@@ -156,7 +156,7 @@ export async function generateCriticalCSS({ browserInterface, progressCallback, 
         return [css, warnings];
     }
     finally {
-        browserInterface.cleanup();
+        await browserInterface.cleanup();
     }
 }
 //# sourceMappingURL=generate-critical-css.js.map
