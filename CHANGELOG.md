@@ -12,6 +12,9 @@ This is an alpha version! The changes listed here are not final.
 ### Changed
 - Update dependencies.
 
+### Fixed
+- Fix not returning correct URL when a page is 404.
+
 ## [1.0.10] - 2025-04-01
 ### Changed
 - Update package dependencies. [#42762]
