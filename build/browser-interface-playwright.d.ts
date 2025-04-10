@@ -1,6 +1,6 @@
 import { BrowserContext, Page } from 'playwright-core';
-import { BrowserInterface, BrowserRunnable, FetchOptions } from './browser-interface.js';
-import { Viewport } from './types.js';
+import { BrowserInterface, BrowserRunnable, FetchOptions } from './browser-interface.ts';
+import { Viewport } from './types.ts';
 export type Tab = {
     page: Page;
     statusCode: number | null;

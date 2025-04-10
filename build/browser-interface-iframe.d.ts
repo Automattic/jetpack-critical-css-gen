@@ -1,6 +1,6 @@
-import { BrowserInterface, BrowserRunnable } from './browser-interface.js';
-import { UrlError } from './errors.js';
-import { Viewport } from './types.js';
+import { BrowserInterface, BrowserRunnable } from './browser-interface.ts';
+import { UrlError } from './errors.ts';
+import { Viewport } from './types.ts';
 type VerifyMethod = (rawUrl: string, contentWindow: Window, contentDocument: Document) => boolean;
 type BrowserInterfaceIframeOptions = {
     requestGetParameters?: {

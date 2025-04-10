@@ -1,6 +1,6 @@
-import { BrowserInterface } from './browser-interface.js';
-import { HttpError } from './errors.js';
-import { objectPromiseAll } from './object-promise-all.js';
+import { BrowserInterface } from "./browser-interface.js";
+import { HttpError } from "./errors.js";
+import { objectPromiseAll } from "./object-promise-all.js";
 const PAGE_GOTO_TIMEOUT_MS = 5 * 60 * 1000;
 export class BrowserInterfacePlaywright extends BrowserInterface {
     /**

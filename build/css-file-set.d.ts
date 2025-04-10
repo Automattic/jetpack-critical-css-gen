@@ -1,6 +1,6 @@
-import { BrowserInterface } from './browser-interface.js';
-import { StyleAST } from './style-ast.js';
-import { FilterSpec } from './types.js';
+import { BrowserInterface } from './browser-interface.ts';
+import { StyleAST } from './style-ast.ts';
+import { FilterSpec } from './types.ts';
 type CSSFile = {
     css: string;
     ast: StyleAST;

@@ -1,5 +1,5 @@
-import { BrowserInterface } from './browser-interface.js';
-import { FilterSpec, Viewport } from './types.js';
+import { BrowserInterface } from './browser-interface.ts';
+import { FilterSpec, Viewport } from './types.ts';
 /**
  * Generates critical CSS for the given URLs and viewports.
  *

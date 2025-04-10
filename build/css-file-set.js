@@ -1,5 +1,5 @@
-import { HttpError, UnknownError, UrlError } from './errors.js';
-import { StyleAST } from './style-ast.js';
+import { HttpError, UnknownError, UrlError } from "./errors.js";
+import { StyleAST } from "./style-ast.js";
 // Maximum number of iterations when pruning unused variables.
 const maxVarPruneIterations = 10;
 /**

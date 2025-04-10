@@ -1,5 +1,5 @@
-import { BrowserInterface } from './browser-interface.js';
-import { CrossDomainError, HttpError, LoadTimeoutError, RedirectError, UrlVerifyError, UnknownError, XFrameDenyError, InvalidURLError, } from './errors.js';
+import { BrowserInterface } from "./browser-interface.js";
+import { CrossDomainError, HttpError, LoadTimeoutError, RedirectError, UrlVerifyError, UnknownError, XFrameDenyError, InvalidURLError, } from "./errors.js";
 const defaultLoadTimeout = 60 * 1000;
 export class BrowserInterfaceIframe extends BrowserInterface {
     constructor({ requestGetParameters, loadTimeout, verifyPage, allowScripts, }) {
