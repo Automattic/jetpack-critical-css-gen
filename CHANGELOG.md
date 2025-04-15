@@ -12,6 +12,7 @@ This is an alpha version! The changes listed here are not final.
 ### Changed
 - Adjust relative imports in TypeScript sources to use correct extensions after enabling TypeScript's new `rewriteRelativeImportExtensions` option. The built JS should be unaffected, so this is not a breaking change.
 - Update dependencies.
+- Update package dependencies.
 
 ### Fixed
 - Fix not returning correct URL when a page is 404.
