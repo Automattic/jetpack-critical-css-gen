@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.12-alpha] - unreleased
+
+This is an alpha version! The changes listed here are not final.
+
 ## [1.0.11] - 2025-04-16
 ### Changed
 - Adjust relative imports in TypeScript sources to use correct extensions after enabling TypeScript's new `rewriteRelativeImportExtensions` option. The built JS should be unaffected, so this is not a breaking change. [#42990]
@@ -83,6 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial version. [#38429]
 
+[1.0.12-alpha]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v1.0.11...v1.0.12-alpha
 [1.0.11]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v1.0.10...v1.0.11
 [1.0.10]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v1.0.9...v1.0.10
 [1.0.9]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v1.0.8...v1.0.9

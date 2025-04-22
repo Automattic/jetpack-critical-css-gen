@@ -36,7 +36,6 @@ function hasEmptyChildList(node) {
  * methods for pruning and rearranging it.
  */
 export class StyleAST {
-    // eslint-disable-next-line no-useless-constructor
     constructor(css, ast, errors) {
         this.css = css;
         this.ast = ast;
