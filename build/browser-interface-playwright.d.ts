@@ -51,4 +51,5 @@ export declare class BrowserInterfacePlaywright extends BrowserInterface {
      */
     fetch(url: string, options: FetchOptions, _role: 'css' | 'html'): Promise<Response>;
     private isOkStatus;
+    private isSameOrigin;
 }
