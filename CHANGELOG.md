@@ -12,6 +12,9 @@ This is an alpha version! The changes listed here are not final.
 ### Changed
 - Update dependencies.
 
+### Fixed
+- Fix not picking up stylesheets when their rel attribute was more complex.
+
 ## [1.0.17] - 2025-08-05
 ### Changed
 - Internal updates.
