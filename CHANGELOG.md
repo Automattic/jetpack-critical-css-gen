@@ -5,18 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.18-alpha] - unreleased
-
-This is an alpha version! The changes listed here are not final.
-
+## [1.0.18] - 2025-08-21
 ### Added
-- Added typecheck script to ensure that the TS files are type-checked.
+- Added typecheck script to ensure that the TS files are type-checked. [#44795]
 
 ### Changed
-- Update dependencies.
+- Update dependencies. [#44736]
 
 ### Fixed
-- Fix not picking up stylesheets when their rel attribute was more complex.
+- Fix not picking up stylesheets when their rel attribute was more complex. [#44753]
 
 ## [1.0.17] - 2025-08-05
 ### Changed
@@ -122,7 +119,7 @@ This is an alpha version! The changes listed here are not final.
 ### Added
 - Initial version. [#38429]
 
-[1.0.18-alpha]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v1.0.17...v1.0.18-alpha
+[1.0.18]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v1.0.17...v1.0.18
 [1.0.17]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v1.0.16...v1.0.17
 [1.0.16]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v1.0.15...v1.0.16
 [1.0.15]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v1.0.14...v1.0.15
