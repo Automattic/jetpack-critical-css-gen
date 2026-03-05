@@ -13,7 +13,7 @@ import { FilterSpec, Viewport } from './types.ts';
  * @param {number}           root0.maxPages         - Maximum number of pages to process (default: 10)
  * @return {Promise<[string, Error[]]>} A promise that resolves to an array containing the critical CSS string and an array of errors.
  */
-export declare function generateCriticalCSS({ browserInterface, progressCallback, urls, viewports, filters, successRatio, maxPages, }: {
+export declare function generateCriticalCSS({ browserInterface, progressCallback, urls, viewports, filters, successRatio, maxPages }: {
     browserInterface: BrowserInterface;
     progressCallback?: (step: number, total: number) => void;
     urls: string[];

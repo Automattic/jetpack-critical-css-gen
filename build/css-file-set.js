@@ -1,5 +1,5 @@
-import { HttpError, UnknownError, UrlError } from "./errors.js";
-import { StyleAST } from "./style-ast.js";
+import { HttpError, UnknownError, UrlError } from './errors.js';
+import { StyleAST } from './style-ast.js';
 // Maximum number of iterations when pruning unused variables.
 const maxVarPruneIterations = 10;
 /**
@@ -8,9 +8,13 @@ const maxVarPruneIterations = 10;
  * all errors that occur while loading or parsing CSS.
  */
 export class CSSFileSet {
+    browserInterface;
+    knownUrls;
+    cssFiles;
+    errors;
+    internalStyles = {};
     constructor(browserInterface) {
         this.browserInterface = browserInterface;
-        this.internalStyles = {};
         this.knownUrls = {};
         this.cssFiles = [];
         this.errors = [];

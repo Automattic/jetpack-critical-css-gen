@@ -55,8 +55,8 @@ export declare class BrowserInterface {
      * @return {string[]} Array of selectors matching above-the-fold elements.
      */
     static innerFindMatchingSelectors({ innerWindow, args: [selectors] }: {
-        innerWindow: any;
         args: [any];
+        innerWindow: any;
     }): string[];
     /**
      * Given a set of CSS selectors (as object keys), along with "simplified" versions
@@ -70,8 +70,8 @@ export declare class BrowserInterface {
      *                                           {string[]} wrappedArgs.args[pageSelectors] - String array containing selectors that appear anywhere on this page (as returned by innerFindMatchingSelectors) - should be a subset of keys in selectors.
      * @return {string[]} Array of selectors matching above-the-fold elements.
      */
-    static innerFindAboveFoldSelectors({ innerWindow, args: [selectors, pageSelectors], }: {
-        innerWindow: any;
+    static innerFindAboveFoldSelectors({ innerWindow, args: [selectors, pageSelectors] }: {
         args: [any, any];
+        innerWindow: any;
     }): string[];
 }

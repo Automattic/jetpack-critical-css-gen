@@ -21,23 +21,7 @@ export declare class BrowserInterfacePlaywright extends BrowserInterface {
     constructor(context: BrowserContext, urls: string[]);
     cleanup(): Promise<void>;
     private getTabs;
-    /**
-     * Open an array of urls in a new browser context.
-     *
-     * Take a browser instance and an array of urls to open in new tabs.
-     *
-     * @param {BrowserContext} context - Browser context to use.
-     * @param {string[]}       urls    - Array of urls to open.
-     * @return {Promise< TabsByUrl >} Promise resolving to the browser context.
-     */
     private openUrls;
-    /**
-     * Open url in a new tab in a given browserContext.
-     *
-     * @param {BrowserContext} browserContext - Browser context to use.
-     * @param {string}         url            - Url to open.
-     * @return {Promise<Page>} Promise resolving to the page instance.
-     */
     private newTab;
     runInPage<ReturnType>(pageUrl: string, viewport: Viewport | null, method: BrowserRunnable<ReturnType>, ...args: unknown[]): Promise<ReturnType>;
     /**
