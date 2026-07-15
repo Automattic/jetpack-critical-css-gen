@@ -18,7 +18,7 @@ export declare class BrowserInterfaceIframe extends BrowserInterface {
     private currentSize;
     private wrapperDiv;
     private iframe;
-    constructor({ requestGetParameters, loadTimeout, verifyPage, allowScripts }: BrowserInterfaceIframeOptions);
+    constructor({ requestGetParameters, loadTimeout, verifyPage, allowScripts, }: BrowserInterfaceIframeOptions);
     cleanup(): Promise<void>;
     fetch(url: string, options: RequestInit, _role: 'css' | 'html'): Promise<Response>;
     runInPage<ReturnType>(pageUrl: string, viewport: Viewport | null, method: BrowserRunnable<ReturnType>, ...args: unknown[]): Promise<ReturnType>;

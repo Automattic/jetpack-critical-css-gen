@@ -3,9 +3,6 @@ import { HttpError, RedirectError } from './errors.js';
 import { objectPromiseAll } from './object-promise-all.js';
 const PAGE_GOTO_TIMEOUT_MS = 5 * 60 * 1000;
 export class BrowserInterfacePlaywright extends BrowserInterface {
-    context;
-    urls;
-    tabs;
     /**
      * Creates a new BrowserInterfacePlaywright instance.
      *
@@ -58,7 +55,7 @@ export class BrowserInterfacePlaywright extends BrowserInterface {
                 page,
                 statusCode: null,
             };
-            tab.page.on('response', async response => {
+            tab.page.on('response', async (response) => {
                 if (response.url() === url) {
                     tab.statusCode = response.status();
                 }

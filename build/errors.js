@@ -4,8 +4,6 @@
  * problems and the URLs they affect.
  */
 export class SuccessTargetError extends Error {
-    isSuccessTargetError;
-    urlErrors;
     constructor(urlErrors) {
         super('Insufficient pages loaded to meet success target. Errors:\n' +
             Object.values(urlErrors)
@@ -29,8 +27,6 @@ export class SuccessTargetError extends Error {
  * SuccessTargetError.
  */
 export class UrlError extends Error {
-    type;
-    meta;
     constructor(type, meta, message) {
         super(message);
         this.type = type;

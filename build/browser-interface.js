@@ -1,5 +1,4 @@
 export class BrowserInterface {
-    urlErrors;
     constructor() {
         this.urlErrors = {};
     }

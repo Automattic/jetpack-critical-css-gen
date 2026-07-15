@@ -36,9 +36,6 @@ function hasEmptyChildList(node) {
  * methods for pruning and rearranging it.
  */
 export class StyleAST {
-    css;
-    ast;
-    errors;
     constructor(css, ast, errors) {
         this.css = css;
         this.ast = ast;

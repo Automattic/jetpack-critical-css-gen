@@ -8,13 +8,9 @@ const maxVarPruneIterations = 10;
  * all errors that occur while loading or parsing CSS.
  */
 export class CSSFileSet {
-    browserInterface;
-    knownUrls;
-    cssFiles;
-    errors;
-    internalStyles = {};
     constructor(browserInterface) {
         this.browserInterface = browserInterface;
+        this.internalStyles = {};
         this.knownUrls = {};
         this.cssFiles = [];
         this.errors = [];
