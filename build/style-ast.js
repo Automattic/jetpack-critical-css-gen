@@ -247,7 +247,7 @@ export class StyleAST {
         csstree.walk(this.ast, {
             visit: 'Atrule',
             enter: (atrule, atitem, atlist) => {
-                if (names.includes(csstree.keyword(atrule.name).basename)) {
+                if (names.includes(csstree.keyword(csstree.ident.decode(atrule.name)).basename)) {
                     atlist.remove(atitem);
                 }
             },

@@ -12,6 +12,9 @@ This is an alpha version! The changes listed here are not final.
 ### Changed
 - Update package dependencies.
 
+### Fixed
+- Avoid repeating shared critical styles from combined stylesheets across pages.
+
 ## [2.0.7] - 2026-09-28
 ### Changed
 - Update package dependencies. [#52297]

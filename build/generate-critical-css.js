@@ -1,5 +1,6 @@
 import { BrowserInterface } from './browser-interface.js';
 import { CSSFileSet } from './css-file-set.js';
+import { deduplicateCss } from './deduplicate-css.js';
 import { SuccessTargetError, EmptyCSSError } from './errors.js';
 import { removeIgnoredPseudoElements } from './ignored-pseudo-elements.js';
 import { minifyCss } from './minify-css.js';
@@ -154,7 +155,17 @@ export async function generateCriticalCSS({ browserInterface, progressCallback, 
         // Prune each AST for above-fold selector list. Note: this prunes a clone.
         const asts = cssFiles.prunedAsts(aboveFoldSelectors);
         // Convert ASTs to CSS.
-        const [css, cssErrors] = minifyCss(asts.map(ast => ast.toCSS()).join('\n'));
+        const results = asts.map(ast => minifyCss(ast.toCSS()));
+        const cssErrors = results.flatMap(result => result[1]);
+        const joined = results.map(result => result[0]).join('\n');
+        let css = joined;
+        try {
+            css = deduplicateCss(joined);
+        }
+        catch (error) {
+            // Parser failures must not discard otherwise usable Critical CSS.
+            cssErrors.push(error instanceof Error ? error.message : String(error));
+        }
         // If there is no Critical CSS, it means the URLs did not have any CSS in their external style sheet(s).
         if (!css) {
             const emptyCSSErrors = {};
