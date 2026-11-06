@@ -1,12 +1,15 @@
 import { BrowserInterface } from './browser-interface.js';
 import { CrossDomainError, HttpError, LoadTimeoutError, RedirectError, UrlVerifyError, UnknownError, XFrameDenyError, InvalidURLError, } from './errors.js';
 const defaultLoadTimeout = 60 * 1000;
+const defaultCheckTimeout = 30 * 1000;
 export class BrowserInterfaceIframe extends BrowserInterface {
-    constructor({ requestGetParameters, loadTimeout, verifyPage, allowScripts, }) {
+    constructor({ requestGetParameters, loadTimeout, checkTimeout, verifyPage, allowScripts, signal, }) {
         super();
         this.requestGetParameters = requestGetParameters || {};
         this.loadTimeout = loadTimeout || defaultLoadTimeout;
+        this.checkTimeout = checkTimeout || defaultCheckTimeout;
         this.verifyPage = verifyPage;
+        this.signal = signal;
         // Default 'allowScripts' to true if not specified.
         allowScripts = allowScripts !== false;
         this.currentUrl = null;
@@ -44,9 +47,9 @@ export class BrowserInterfaceIframe extends BrowserInterface {
         }
         return url.toString();
     }
-    async diagnoseUrlError(url) {
+    async diagnoseUrlError(url, signal) {
         try {
-            const response = await this.fetch(url, { redirect: 'manual' }, 'html');
+            const response = await this.fetch(url, { redirect: 'manual', signal }, 'html');
             const headers = response.headers;
             if (headers.get('x-frame-options') === 'DENY') {
                 return new XFrameDenyError({ url });
@@ -66,14 +69,22 @@ export class BrowserInterfaceIframe extends BrowserInterface {
             return new UnknownError({ url, message: err.message });
         }
     }
-    async is404Page(url) {
-        const response = await this.fetch(url, { redirect: 'manual' }, 'html');
+    async is404Page(url, signal) {
+        const response = await this.fetch(url, { redirect: 'manual', signal }, 'html');
         return response.status === 404;
     }
     sameOrigin(url) {
         return new URL(url).origin === window.location.origin;
     }
     async loadPage(rawUrl) {
+        var _a;
+        // A cancelled run must not reuse the page it loaded before the cancel.
+        if ((_a = this.signal) === null || _a === void 0 ? void 0 : _a.aborted) {
+            this.currentUrl = null;
+            const cancelled = new UnknownError({ url: rawUrl, message: 'Generation was cancelled' });
+            this.trackUrlError(rawUrl, cancelled);
+            throw cancelled;
+        }
         if (rawUrl === this.currentUrl) {
             return;
         }
@@ -88,6 +99,7 @@ export class BrowserInterfaceIframe extends BrowserInterface {
         }
         const fullUrl = this.addGetParameters(url);
         return new Promise((resolve, rawReject) => {
+            var _a, _b;
             // Track all URL errors.
             const reject = err => {
                 this.trackUrlError(rawUrl, err);
@@ -98,34 +110,64 @@ export class BrowserInterfaceIframe extends BrowserInterface {
                 reject(new CrossDomainError({ url: fullUrl }));
                 return;
             }
-            // Set a timeout.
-            const timeoutId = setTimeout(() => {
+            // The load has its own limit, and the checks that follow it have theirs, so a check that
+            // never answers cannot stall the run.
+            const checks = new AbortController();
+            let settled = false;
+            let timeoutId;
+            const finish = (settle) => {
+                var _a;
+                if (settled) {
+                    return;
+                }
+                settled = true;
+                clearTimeout(timeoutId);
                 this.iframe.onload = null;
-                reject(new LoadTimeoutError({ url: fullUrl }));
-            }, this.loadTimeout);
+                (_a = this.signal) === null || _a === void 0 ? void 0 : _a.removeEventListener('abort', onAbort);
+                settle();
+            };
+            const onAbort = () => {
+                checks.abort();
+                this.iframe.src = 'about:blank';
+                this.currentUrl = null;
+                finish(() => reject(new UnknownError({ url: fullUrl, message: 'Generation was cancelled' })));
+            };
+            const timeOut = () => {
+                checks.abort();
+                finish(() => reject(new LoadTimeoutError({ url: fullUrl })));
+            };
+            timeoutId = setTimeout(timeOut, this.loadTimeout);
+            if ((_a = this.signal) === null || _a === void 0 ? void 0 : _a.aborted) {
+                onAbort();
+                return;
+            }
+            (_b = this.signal) === null || _b === void 0 ? void 0 : _b.addEventListener('abort', onAbort, { once: true });
             // Catch load event.
             this.iframe.onload = async () => {
+                this.iframe.onload = null;
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(timeOut, this.checkTimeout);
                 try {
-                    this.iframe.onload = null;
-                    clearTimeout(timeoutId);
                     // Check HTTP status code first.
-                    const is404 = await this.is404Page(fullUrl);
+                    const is404 = await this.is404Page(fullUrl, checks.signal);
                     if (is404) {
                         throw new HttpError({ url: fullUrl, code: 404 });
                     }
                     // Verify the inner document is readable.
                     if (!this.iframe.contentDocument || !this.iframe.contentWindow) {
-                        throw ((await this.diagnoseUrlError(fullUrl)) || new CrossDomainError({ url: fullUrl }));
+                        throw ((await this.diagnoseUrlError(fullUrl, checks.signal)) ||
+                            new CrossDomainError({ url: fullUrl }));
                     }
                     if (!this.verifyPage(rawUrl, this.iframe.contentWindow, this.iframe.contentDocument)) {
                         // Diagnose and throw an appropriate error.
-                        throw ((await this.diagnoseUrlError(fullUrl)) || new UrlVerifyError({ url: fullUrl }));
+                        throw ((await this.diagnoseUrlError(fullUrl, checks.signal)) ||
+                            new UrlVerifyError({ url: fullUrl }));
                     }
                     this.currentUrl = rawUrl;
-                    resolve();
+                    finish(resolve);
                 }
                 catch (err) {
-                    reject(err);
+                    finish(() => reject(err));
                 }
             };
             this.iframe.src = fullUrl;
