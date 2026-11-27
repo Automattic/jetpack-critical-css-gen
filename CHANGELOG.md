@@ -5,10 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.1.2-alpha] - unreleased
-
-This is an alpha version! The changes listed here are not final.
-
+## [2.1.2] - 2026-11-27
 ### Changed
 - Update dependencies.
 
@@ -219,7 +216,7 @@ This is an alpha version! The changes listed here are not final.
 ### Added
 - Initial version. [#38429]
 
-[2.1.2-alpha]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v2.1.1...v2.1.2-alpha
+[2.1.2]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v2.0.7...v2.1.0
 [2.0.7]: https://github.com/Automattic/jetpack-critical-css-gen/compare/v2.0.6...v2.0.7
