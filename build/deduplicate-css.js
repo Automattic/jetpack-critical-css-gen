@@ -24,6 +24,7 @@ export function deduplicateCss(css) {
         return children.get(key);
     };
     const nameOf = (node) => csstree.ident.decode(node.name).toLowerCase();
+    const isLayerStatement = (node) => node.type === 'Atrule' && nameOf(node) === 'layer' && !node.block;
     const preludeOf = (node) => {
         if (!preludes.has(node)) {
             preludes.set(node, node.prelude ? csstree.generate(node.prelude) : '');
@@ -184,7 +185,7 @@ export function deduplicateCss(css) {
             if (start === undefined) {
                 start = item;
             }
-            if (node.type === 'Atrule' && nameOf(node) === 'layer' && !node.block) {
+            if (isLayerStatement(node)) {
                 if (item !== start) {
                     children.remove(item);
                     children.insert(item, start);
@@ -207,7 +208,10 @@ export function deduplicateCss(css) {
     joinAdjacentGroups(ast.children);
     registerLayers(ast.children, 0, 0, true);
     prune(ast.children, 0);
-    positionRegistrations(ast.children);
+    // Check after registerLayers, which inserts layer statements for named blocks.
+    if (csstree.find(ast, isLayerStatement)) {
+        positionRegistrations(ast.children);
+    }
     return csstree.generate(ast);
 }
 //# sourceMappingURL=deduplicate-css.js.map

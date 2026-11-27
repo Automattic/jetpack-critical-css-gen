@@ -12,6 +12,9 @@ This is an alpha version! The changes listed here are not final.
 ### Changed
 - Update dependencies.
 
+### Fixed
+- Speed up deduplication for deeply nested stylesheets without cascade layers.
+
 ## [2.1.1] - 2026-11-17
 ### Changed
 - Update package dependencies. [#54703] [#54706]
